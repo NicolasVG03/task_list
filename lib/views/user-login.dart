@@ -18,10 +18,6 @@ class UserLoginPage extends StatelessWidget {
     }
   }
 
-  void Register(BuildContext context){
-    Navigator.of(context).pushNamed('user-create');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +67,7 @@ class UserLoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 16.0),
               TextButton(
-                onPressed: () => Register(context),
+                onPressed: () =>  Navigator.of(context).pushNamed('user-create'),
                 child: const Text('Registrar'),
               ),
             ],
