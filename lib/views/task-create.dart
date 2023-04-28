@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class TaskCreatePage extends StatelessWidget {
   // <input id="task" name="task" ... == GlbalKey
   var formKey = GlobalKey<FormState>();
+  FirebaseAuth auth = FirebaseAuth.instance;
   String? name = '';
   DateTime? dataSelecionada;
   final prioridades = ['Alta', 'Média', 'Baixa'];
@@ -17,6 +18,7 @@ class TaskCreatePage extends StatelessWidget {
       firestore.collection('tasks').add({
         'name': name,
         'finished': false,
+        'uid': auth.currentUser!.uid,
       });
       Navigator.of(context).pop();
     }
